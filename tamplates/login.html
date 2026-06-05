@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Telegram Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="11" fill="#0088cc"/>
+                    <rect x="7" y="10" width="10" height="7" rx="1" fill="white"/>
+                    <circle cx="12" cy="8" r="3" fill="white"/>
+                </svg>
+            </div>
+            <h1>Secure Access</h1>
+            <p class="subtitle">Enter your password to continue</p>
+            
+            {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+            {% endif %}
+            
+            <form method="POST" action="/login">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password" 
+                        placeholder="Enter your app password"
+                        required
+                        autofocus
+                    >
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            
+            <div class="warning">
+                <strong>Security Notice:</strong> This app is protected. After 5 failed attempts, you'll be locked out for 5 minutes.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
